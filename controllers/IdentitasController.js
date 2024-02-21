@@ -59,15 +59,25 @@ const createIdentitas = async (req, res) => {
 
         const idIdentitas = `ID${Date.now().toString().padStart(13, '0')}`;
 
+        let formattedNipPegawai = nipPegawai;
+        if (nipPegawai.length > 8) {
+            formattedNipPegawai = nipPegawai.slice(0, 8) + " " + nipPegawai.slice(8);
+        }
+
+        let formattedNipPejabat = nipPejabat;
+        if (nipPejabat.length > 8) {
+            formattedNipPejabat = nipPejabat.slice(0, 8) + " " + nipPejabat.slice(8);
+        }
+
         await Identitas.create({
             idIdentitas: idIdentitas,
             namaPegawai: namaPegawai,
-            nipPegawai: nipPegawai,
+            nipPegawai: formattedNipPegawai,
             pngktAndGolRuangPegawai: pngktAndGolRuangPegawai,
             jabatanPegawai: jabatanPegawai,
             unitKerjaPegawai: unitKerjaPegawai,
             namaPejabat: namaPejabat,
-            nipPejabat: nipPejabat,
+            nipPejabat: formattedNipPejabat,
             pngktAndGolRuangPejabat: pngktAndGolRuangPejabat,
             jabatanPejabat: jabatanPejabat,
             unitKerjaPejabat: unitKerjaPejabat,
