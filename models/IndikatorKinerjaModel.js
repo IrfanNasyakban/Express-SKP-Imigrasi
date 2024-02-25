@@ -18,7 +18,7 @@ const IndikatorKinerja = db.define('indikator_kinerja', {
     freezeTableName: true
 })
 
-IndikatorKinerja.belongsTo(RhkStructure, { foreignKey: 'idRhkStructure', as: "RhkIntervensi" })
+IndikatorKinerja.belongsTo(RhkStructure, { foreignKey: 'idRhkStructure', as: "RhkStructure" })
 RhkStructure.hasMany(IndikatorKinerja, { foreignKey: 'idRhkStructure' });
 
 module.exports = IndikatorKinerja;

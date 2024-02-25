@@ -12,9 +12,9 @@ const {
 
 router.get("/indikator-kinerja", getIndikatorKinerja);
 router.get("/indikator-kinerja/identitas-structure/:idIdentitasStructure", getIndikatorKinerjaByIdIdentitasStructure,);
-router.get("/indikator-kinerja/:idRhk", getIndikatorKinerjaById);
+router.get("/indikator-kinerja/:idIndikatorKinerja", getIndikatorKinerjaById);
 router.post("/indikator-kinerja", createIndikatorKinerja);
-router.patch("/indikator-kinerja/:idRhk", updateIndikatorKinerja);
-router.delete("/indikator-kinerja/:idRhk", deleteIndikatorKinerja);
+router.patch("/indikator-kinerja/:idIndikatorKinerja", updateIndikatorKinerja);
+router.delete("/indikator-kinerja/:idIndikatorKinerja", deleteIndikatorKinerja);
 
 module.exports = router;
