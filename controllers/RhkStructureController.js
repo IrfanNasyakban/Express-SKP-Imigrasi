@@ -1,3 +1,4 @@
+const IndikatorKinerja = require("../models/IndikatorKinerjaModel.js");
 const RhkStructure = require("../models/RhkStructureModel.js")
 const { Op } = require("sequelize");
 
@@ -29,6 +30,23 @@ const getRhkStructureById = async (req, res) => {
         res.json(response);
     } catch (error) {
         console.log(error.message);
+    }
+};
+
+const getRhkStructureByIdIdentitasStructure = async (req, res) => {
+    const { idIdentitasStructure } = req.params;
+    try {
+        const rhkStructure = await RhkStructure.findAll({
+            where: { idIdentitasStructure: idIdentitasStructure },
+            include: {
+                model: IndikatorKinerja,
+                as: 'indikator_kinerjas',
+            },
+            
+        });
+        res.status(200).json(rhkStructure);
+    } catch (error) {
+        res.status(500).json({ msg: error.message })
     }
 };
 
@@ -79,6 +97,7 @@ const deleteRhkStructure = async (req, res) => {
 module.exports = {
     getRhkStructure,
     getRhkStructureById,
+    getRhkStructureByIdIdentitasStructure,
     createRhkStructure,
     updateRhkStructure,
     deleteRhkStructure

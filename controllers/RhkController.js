@@ -58,7 +58,7 @@ const createRhk = async (req, res) => {
         });
 
         // Ambil data Identitas berdasarkan idIntervensi
-        const identitas = await Identitas.findOne({ idIntervensi: idIntervensi });
+        const identitas = await Intervensi.findOne({ where: { idIntervensi } });
 
          // Jika data Identitas ditemukan, kirim kembali data idIdentitas
          if (identitas) {

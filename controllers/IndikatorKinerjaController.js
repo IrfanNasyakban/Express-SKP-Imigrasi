@@ -56,15 +56,15 @@ const createIndikatorKinerja = async (req, res) => {
             perspektif: perspektif,
         });
 
-        // Ambil data Identitas berdasarkan idIntervensi
-        const identitasStructure = await IdentitasStructure.findOne({ idRhkStructure: idRhkStructure });
+        // Ambil data Identitas Structure berdasarkan idRhkStructure
+        const identitasStructure = await RhkStructure.findOne({ where: { idRhkStructure } });
 
          // Jika data Identitas ditemukan, kirim kembali data idIdentitas
          if (identitasStructure) {
             res.json({ msg: "Indikator Kinerja Created", idIndikatorKinerja: idIndikatorKinerja, idIdentitasStructure: identitasStructure.idIdentitasStructure });
         } else {
             // Jika data Identitas tidak ditemukan, kirim pesan kesalahan
-            res.status(404).json({ error: "Data Identitas Structure not found" });
+            res.status(404).json({ error: "Data Identitas not found" });
         }
     } catch (error) {
         console.log(error);
